@@ -1,5 +1,3 @@
-% Prepared by Li Zheng, May, 2018
-
 function T = FKinSpace_DVRK_TCM(RobotPara, M, Slist, thetalist)
 % Mlist shows the initial configurations
 % Slist shows the screws, for the bending section the screw is calculated

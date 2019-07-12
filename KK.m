@@ -1,11 +1,11 @@
-%delete(obj);
-function [u,v]=KK(error1,error2,pe, obj)
+
+function [u,v]=KK(error1,error2,pe)
 f=810.83424;
-% global obj
+global obj
 % delete(instrfind({'Port'},{'COM6'}));
 
-u=640;
-v=320;
+u=321;
+v=241;
 
 % global port;
 % port=serial('COM6');
@@ -13,8 +13,6 @@ v=320;
 % set(port,'DataBits',8);
 % set(port,'StopBits',1);
 % fopen(port);
-
-
 
 %
 % N=5;                                           %��ʼ����������Ҫ��֡��
@@ -83,24 +81,22 @@ for i = 2
     %      Im= ycbcr2rgb(Im);
     %     Im2(:,:,:,i)=Im;
     %  end
-%     figure (2)
+    figure(1)
     imshow(Im);
     hold on
     %     title_time = sprintf('t = %6.4f', t);
-%     title_tip  = sprintf('Camera Position: x:%6.4f, y:%6.4f, z:%6.4f', ...
-%         pe(1), pe(2), pe(3));
-%     title_error = sprintf('error: %0.4f [pixel]', ...
-%         sqrt(error1^2+error2^2));
-    
-    
+    title_tip  = sprintf('Camera Position: x:%6.4f, y:%6.4f, z:%6.4f', ...
+        pe(1), pe(2), pe(3));
+    title_error = sprintf('error: %0.4f [pixel]', ...
+        sqrt(error1^2+error2^2));
     %     text(10,20,title_tip,'Color','white','FontSize',12);
     %     text(10,40,title_error,'Color','white','FontSize',12);
     
-%     title({
-%         %             title_time
-%         ['\fontsize{24}',title_tip];
-%         title_error
-%         });
+    title({
+        %             title_time
+        ['\fontsize{24}',title_tip];
+        title_error
+        });
     %     hold off
     %      figure (2)
     %      imshow(Im(:,:,2));
@@ -133,8 +129,8 @@ for i = 2
     %         end
     %         figure(3)
     plot(cc(i),cr(i),'r.','MarkerSize',25); %  �������(cc(i),cr(i))���̵��ʾ
-%     plot(cc2(i),cr2(i),'r.','MarkerSize',25);
-             hold on
+    plot(cc2(i),cr2(i),'r.','MarkerSize',25);
+    %         hold on
     if flag==0
         continue
     end
@@ -180,10 +176,8 @@ for i = 2
     %        [q1,q2]=T(uu)
     %        q1*180/3.14
     %        q2*180/3.14\
-%     pause(0.01);
+    pause(0.01);
 end
 
-% end
-%%  �ر�
 end
 

@@ -1,8 +1,8 @@
 function [q1,q2]=T(uu)
        
-       cx=640;
-       cy=360;
-       f=707/2;
+       cx=320;
+       cy=240;
+       f=810.83424;;
        x_round=uu(1);
        y_round2=uu(2);
        y_round=-(x_round-cx);
@@ -30,7 +30,7 @@ function [q1,q2]=T(uu)
        q2=-(abs(atand(y_round/x_round)))*3.14/180;
        end
        
-       if y_round==0 & x_round>=0
+       if y_round==0 & x_round>0
            q2=0;
        end
       if y_round<0 & x_round==0

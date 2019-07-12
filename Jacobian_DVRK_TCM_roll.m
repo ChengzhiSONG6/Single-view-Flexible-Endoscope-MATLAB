@@ -1,4 +1,4 @@
-% Prepared by Li Zheng, May, 2018
+
 function Js = Jacobian_DVRK_TCM_roll(RobotPara, Slist_m, thetalist)
 N = RobotPara.N;
 Lb = RobotPara.Lb;

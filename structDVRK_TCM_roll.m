@@ -1,4 +1,4 @@
-% Prepared by Li Zheng, May, 2018
+
 function [RobotPara, Slist_m, Mlist_m, Slist_f, Mlist_f] = structDVRK_TCM_roll()
 % structure parameters
 RobotPara.L = 0.6; % the length of psm

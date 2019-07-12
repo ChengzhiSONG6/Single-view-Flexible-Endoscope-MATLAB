@@ -13,7 +13,7 @@ fore = zeros(MR,MC);          %image subtracktion
 % fore = (abs(Imwork(:,:,1) - Imback(:,:,1)) > 85)& (abs(Imwork(:,:,2) - Imback(:,:,2)) < 100)&(abs(Imwork(:,:,3) - Imback(:,:,3)) < 100);
 % fore = (abs(Imwork(:,:,1)) <90)& (abs(Imwork(:,:,2)) > 100)&(abs(Imwork(:,:,3)) > 100);
 % fore=(((Imwork(:,:,2))/(Imwork(:,:,2)+Imwork(:,:,1)+Imwork(:,:,3)))>0.3)&(abs(Imwork(:,:,2)) > 110);
-fore=(abs(Imwork(:,:,2))-abs(Imwork(:,:,1)) >38) & (abs(Imwork(:,:,1) < 170));
+fore=(abs(Imwork(:,:,2))-abs(Imwork(:,:,1)) >30) & (abs(Imwork(:,:,1) < 90));
 %  & abs(Imwork(:,:,3)) -abs(Imwork(:,:,1))<25
 %      figure (2)
 %    imshow(fore)
@@ -45,9 +45,9 @@ for i = 1 : N
     id(i) = i;
 end
 for i = 1 : N-1
-%      if Im(stats(1).Centroid,1)>50
-   for j = i+1 : N
-%        if Im(stats(j).Centroid,1)>50
+    %      if Im(stats(1).Centroid,1)>50
+    for j = i+1 : N
+        %        if Im(stats(j).Centroid,1)>50
         if stats(i).Area < stats(j).Area %��stasts����Ŀ�꣩��������Ӵ�С��˳������
             tmp = stats(i);
             stats(i) = stats(j);
@@ -55,10 +55,10 @@ for i = 1 : N-1
             tmp = id(i);
             id(i) = id(j);
             id(j) = tmp;%ͬ��id�еı��Ϊ�����С������ı��
-         end
-%        end
-   end
-%     end
+        end
+        %        end
+    end
+    %     end
 end
 
 % ȷ��ͼƬ��������һ���������
@@ -69,37 +69,37 @@ end
 %     return %����������������С��100���򷵻�
 % end
 if N==1
-selected = (labeled==id(1));%selectedΪ0��1����1��Ӧ��id(1)��Ŀ�꣬���������Ŀ��
-centroid = stats(1).Centroid;%���Ŀ�������
-w=stats(1).BoundingBox(3);         %��ȡ���εĳ��Ϳ�
-h=stats(1).BoundingBox(4);
-cc = centroid(1);%
-cr = centroid(2);
-cc2=0;
-cr2=0;
-flag = 1;
+    selected = (labeled==id(1));%selectedΪ0��1����1��Ӧ��id(1)��Ŀ�꣬���������Ŀ��
+    centroid = stats(1).Centroid;%���Ŀ�������
+    w=stats(1).BoundingBox(3);         %��ȡ���εĳ��Ϳ�
+    h=stats(1).BoundingBox(4);
+    cc = centroid(1);%
+    cr = centroid(2);
+    cc2=0;
+    cr2=0;
+    flag = 1;
 end
-if (N~=1) && (stats(1).Area > 80) && (stats(2).Area < 80) 
-selected = (labeled==id(1));%selectedΪ0��1����1��Ӧ��id(1)��Ŀ�꣬���������Ŀ��
-centroid = stats(1).Centroid;%���Ŀ�������
-w=stats(1).BoundingBox(3);         %��ȡ���εĳ��Ϳ�
-h=stats(1).BoundingBox(4);
-cc = centroid(1);%
-cr = centroid(2);
-cc2=0;
-cr2=0;
-flag = 1;
+if (N~=1) && (stats(1).Area > 40) && (stats(2).Area < 40)
+    selected = (labeled==id(1));%selectedΪ0��1����1��Ӧ��id(1)��Ŀ�꣬���������Ŀ��
+    centroid = stats(1).Centroid;%���Ŀ�������
+    w=stats(1).BoundingBox(3);         %��ȡ���εĳ��Ϳ�
+    h=stats(1).BoundingBox(4);
+    cc = centroid(1);%
+    cr = centroid(2);
+    cc2=0;
+    cr2=0;
+    flag = 1;
 end
-if (N~=1) && (stats(1).Area > 80) && (stats(2).Area > 80)
-selected = (labeled==id(1));%selectedΪ0��1����1��Ӧ��id(1)��Ŀ�꣬���������Ŀ��
-centroid = stats(1).Centroid;%���Ŀ�������
-centroid2 = stats(2).Centroid;%���Ŀ�������
-w=stats(1).BoundingBox(3);         %��ȡ���εĳ��Ϳ�
-h=stats(1).BoundingBox(4);
-cc = centroid(1);%
-cr = centroid(2);
-cc2=centroid2(1);
-cr2=centroid2(2);
-flag = 1;
+if (N~=1) && (stats(1).Area > 40) && (stats(2).Area > 40)
+    selected = (labeled==id(1));%selectedΪ0��1����1��Ӧ��id(1)��Ŀ�꣬���������Ŀ��
+    centroid = stats(1).Centroid;%���Ŀ�������
+    centroid2 = stats(2).Centroid;%���Ŀ�������
+    w=stats(1).BoundingBox(3);         %��ȡ���εĳ��Ϳ�
+    h=stats(1).BoundingBox(4);
+    cc = centroid(1);%
+    cr = centroid(2);
+    cc2=centroid2(1);
+    cr2=centroid2(2);
+    flag = 1;
 end
 return
